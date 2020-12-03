@@ -8,7 +8,7 @@ db.authenticate()
 
     // Require all models to load them into the db object.
     fs.readdirSync(__dirname)
-      .filter(file => file.split('.').length == 3)
+      .filter(file => file.split('.').length === 3)
       .forEach(file => require(path.join(__dirname, file)));
 
     // Sync the DB once the connection test is passed.

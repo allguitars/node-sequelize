@@ -4,16 +4,14 @@ const express = require('express');
 const app = express();
 
 require('./startup/routes')(app);
-require('./models');
+require('./startup/db-init')();
+// require('./models');
 
 // getCourses();
 
 // Start the server
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
-
 
 /**
  * Get all courses
