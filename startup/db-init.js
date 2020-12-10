@@ -1,18 +1,18 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('./db');
+const db = require('../models/db');
 
-mudule.exports = function () {
+module.exports = function () {
   db.authenticate()
     .then(() => {
       console.log('DB connection has been established successfully.');
 
-      // Require all models to load them into the db object.
-      fs.readdirSync(__dirname)
+      // Load all modules into the db object.
+      fs.readdirSync(__dirname + '/../models/')
         .filter(file => file.split('.').length === 3)
-        .forEach(file => require(path.join(__dirname, file)));
+        .forEach(file => require(path.join(__dirname + '/../models/', file)));
 
-      // Sync the DB once the connection test is passed.
+      // Sync the DB.
       return db.sync();
 
       // For Debug

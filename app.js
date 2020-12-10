@@ -5,7 +5,6 @@ const app = express();
 
 require('./startup/routes')(app);
 require('./startup/db-init')();
-// require('./models');
 
 // getCourses();
 
